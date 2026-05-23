@@ -1,0 +1,22 @@
+# Hackathon2 ChemAI — runtime dependencies
+# Python 3.14.3 (см. .venv)
+
+# Core
+numpy==2.4.4
+pandas==3.0.3
+scipy==1.17.1
+
+# ML
+scikit-learn==1.8.0
+catboost==1.2.10
+lightgbm==4.6.0
+xgboost==3.2.0
+
+# Visualization (EDA)
+matplotlib==3.10.9
+seaborn==0.13.2
+
+# Jupyter (notebooks)
+ipykernel==7.2.0
+ipywidgets==8.1.8
+jupyter==1.1.1
