@@ -1,0 +1,47 @@
+name: Build and deploy presentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'presentation.md'
+      - '.github/workflows/presentation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build HTML via Marp
+        uses: docker://marpteam/marp-cli:v3.4.0
+        with:
+          args: --html --allow-local-files presentation.md -o build/index.html
+        env:
+          MARP_USER: root:root
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
