@@ -32,7 +32,7 @@ jobs:
           MARP_USER: root:root
 
       - name: Copy figures into build
-        run: cp -r figures build/figures
+        run: sudo cp -r figures build/figures
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
