@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'presentation.md'
+      - 'figures/**'
       - '.github/workflows/presentation.yml'
   workflow_dispatch:
 
@@ -29,6 +30,9 @@ jobs:
           args: --html --allow-local-files presentation.md -o build/index.html
         env:
           MARP_USER: root:root
+
+      - name: Copy figures into build
+        run: cp -r figures build/figures
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
