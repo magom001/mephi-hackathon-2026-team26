@@ -8,8 +8,8 @@
 
 ## Документация по проекту
 
+- Презентация: https://magom001.github.io/mephi-hackathon-2026-team26/ (исходник: [presentation.md](presentation.md))
 - Подробный отчёт по исследованию: [REPORT.md](REPORT.md)
-- Презентация (исходник): [presentation.md](presentation.md). HTML-версия публикуется на GitHub Pages при пуше в main.
 
 ## Воспроизведение submission.csv
 
